@@ -4,466 +4,423 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Diagnóstico PARES Online</title>
+  <title>PARES Suite | Plataforma Emprendedora</title>
 
-  <!-- Bootstrap 5 -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- Bootstrap Icons -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
 
   <style>
-    :root {
-      --verde: #2e7d32;
-      --verde-claro: #e8f5e9;
-      --azul: #0d6efd;
-      --oscuro: #1b1b1b;
-      --dorado: #f9a825;
+    :root{
+      --verde:#1f7a3f;
+      --verde2:#2fa866;
+      --oscuro:#102018;
+      --claro:#f4faf6;
+      --dorado:#f4b400;
     }
 
-    body {
+    body{
       font-family: Arial, sans-serif;
-      color: #333;
-      background: #f8f9fa;
+      background: var(--claro);
+      color:#263238;
     }
 
-    .navbar {
-      background: var(--verde);
+    .navbar{
+      background: rgba(16,32,24,.96);
+      backdrop-filter: blur(8px);
     }
 
-    .hero {
-      background: linear-gradient(rgba(46,125,50,.88), rgba(27,27,27,.88)),
-                  url("https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=1600&auto=format&fit=crop");
+    .hero{
+      min-height: 100vh;
+      background:
+        linear-gradient(120deg, rgba(16,32,24,.92), rgba(31,122,63,.86)),
+        url("https://images.unsplash.com/photo-1556761175-b413da4baf72?q=80&w=1600&auto=format&fit=crop");
       background-size: cover;
       background-position: center;
-      color: white;
-      padding: 120px 0;
+      color:white;
+      display:flex;
+      align-items:center;
+      padding-top:80px;
     }
 
-    .section-title {
-      color: var(--verde);
-      font-weight: 700;
+    .hero h1{
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      font-weight:800;
     }
 
-    .card-pares {
-      border: none;
-      border-radius: 18px;
-      box-shadow: 0 8px 24px rgba(0,0,0,.08);
-      transition: .3s;
-    }
-
-    .card-pares:hover {
-      transform: translateY(-6px);
-    }
-
-    .icon-box {
-      width: 64px;
-      height: 64px;
-      border-radius: 50%;
-      background: var(--verde-claro);
-      color: var(--verde);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 28px;
-      margin-bottom: 16px;
-    }
-
-    .badge-pares {
-      background: var(--verde-claro);
-      color: var(--verde);
-      padding: 10px 16px;
+    .btn-pares{
+      background: var(--verde2);
+      color:white;
+      border:none;
       border-radius: 30px;
-      font-weight: bold;
+      padding: 12px 28px;
+      font-weight:700;
     }
 
-    .cta {
+    .btn-pares:hover{
       background: var(--verde);
-      color: white;
-      border-radius: 24px;
+      color:white;
     }
 
-    footer {
-      background: #1b1b1b;
-      color: white;
-      padding: 35px 0;
+    .section-title{
+      color: var(--verde);
+      font-weight:800;
+    }
+
+    .card-module{
+      border:0;
+      border-radius:22px;
+      box-shadow:0 10px 30px rgba(0,0,0,.08);
+      transition:.25s;
+      height:100%;
+      overflow:hidden;
+    }
+
+    .card-module:hover{
+      transform: translateY(-5px);
+    }
+
+    .module-icon{
+      width:70px;
+      height:70px;
+      border-radius:50%;
+      background:#e2f4e9;
+      color:var(--verde);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:32px;
+      margin-bottom:18px;
+    }
+
+    .locked{
+      opacity:.72;
+      filter: grayscale(.35);
+    }
+
+    .badge-active{
+      background: var(--verde2);
+    }
+
+    .badge-soon{
+      background:#6c757d;
+    }
+
+    .roadmap-dot{
+      width:42px;
+      height:42px;
+      border-radius:50%;
+      background:var(--verde);
+      color:white;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:bold;
+      flex-shrink:0;
+    }
+
+    .footer{
+      background:var(--oscuro);
+      color:white;
     }
   </style>
 </head>
 
 <body>
 
-  <!-- NAVBAR -->
-  <nav class="navbar navbar-expand-lg navbar-dark fixed-top shadow">
-    <div class="container">
-      <a class="navbar-brand fw-bold" href="#">
-        <i class="bi bi-diagram-3-fill"></i> Diagnóstico PARES Online
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top shadow-sm">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="#">
+      <i class="bi bi-grid-1x2-fill text-success"></i> PARES Suite
+    </a>
 
-      <div id="menu" class="collapse navbar-collapse">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link" href="#proyecto">Proyecto</a></li>
-          <li class="nav-item"><a class="nav-link" href="#componentes">PARES</a></li>
-          <li class="nav-item"><a class="nav-link" href="#metodologia">Metodología</a></li>
-          <li class="nav-item"><a class="nav-link" href="#tecnologia">Tecnología</a></li>
-          <li class="nav-item"><a class="nav-link" href="#futuro">Visión</a></li>
-        </ul>
-      </div>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div id="menu" class="collapse navbar-collapse">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="#modulos">Módulos</a></li>
+        <li class="nav-item"><a class="nav-link" href="#roadmap">Ruta</a></li>
+        <li class="nav-item"><a class="nav-link" href="#tecnologia">Tecnología</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
+      </ul>
     </div>
-  </nav>
+  </div>
+</nav>
 
-  <!-- HERO -->
-  <header class="hero text-center">
-    <div class="container">
-      <span class="badge bg-warning text-dark mb-3">Modelo PARES</span>
-      <h1 class="display-4 fw-bold">Diagnóstico PARES Online</h1>
-      <p class="lead mt-3">
-        Plataforma inteligente para evaluar, orientar y fortalecer personas emprendedoras.
-      </p>
-      <a href="#proyecto" class="btn btn-light btn-lg mt-4">
-        Ver proyecto
-      </a>
-    </div>
-  </header>
-
-  <!-- PROYECTO -->
-  <section id="proyecto" class="py-5">
-    <div class="container">
-      <div class="row align-items-center g-4">
-        <div class="col-lg-6">
-          <h2 class="section-title">1. Introducción</h2>
-          <p>
-            El Diagnóstico PARES Online es una plataforma digital basada en el Modelo PARES,
-            diseñada para evaluar el nivel de desarrollo de personas emprendedoras, PYMES e
-            iniciativas productivas.
-          </p>
-          <p>
-            La herramienta permite medir fortalezas, debilidades y oportunidades de mejora en
-            cinco dimensiones: Persona, Aprendizaje, Retos, Eco-responsabilidad y Estrategia.
-          </p>
-        </div>
-
-        <div class="col-lg-6">
-          <div class="card card-pares p-4">
-            <h4 class="fw-bold">Datos del proyecto</h4>
-            <p><strong>Autor del Modelo PARES:</strong> Boris Cabezas Marín</p>
-            <p><strong>Desarrollado por:</strong> Project Marketing Office, PMO</p>
-            <p><strong>Versión:</strong> 1.0</p>
-            <p><strong>Enfoque:</strong> Emprendimiento, innovación y regeneración ambiental</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- JUSTIFICACION -->
-  <section class="py-5 bg-white">
-    <div class="container">
-      <h2 class="section-title text-center mb-4">2. Justificación</h2>
-      <p class="text-center mx-auto" style="max-width: 850px;">
-        Muchos emprendimientos reciben capacitación sin un diagnóstico previo claro.
-        Esto provoca esfuerzos dispersos, poca medición de resultados y baja personalización.
-        El Diagnóstico PARES Online permite ordenar la información, identificar prioridades
-        reales y generar recomendaciones inmediatas.
-      </p>
-
-      <div class="row g-4 mt-4">
-        <div class="col-md-3">
-          <div class="card card-pares p-4 h-100 text-center">
-            <i class="bi bi-clipboard-data fs-1 text-success"></i>
-            <h5 class="mt-3">Diagnóstico</h5>
-            <p>Evalúa la situación actual del emprendimiento.</p>
-          </div>
-        </div>
-
-        <div class="col-md-3">
-          <div class="card card-pares p-4 h-100 text-center">
-            <i class="bi bi-lightbulb fs-1 text-success"></i>
-            <h5 class="mt-3">Recomendaciones</h5>
-            <p>Genera acciones prácticas y personalizadas.</p>
-          </div>
-        </div>
-
-        <div class="col-md-3">
-          <div class="card card-pares p-4 h-100 text-center">
-            <i class="bi bi-bar-chart fs-1 text-success"></i>
-            <h5 class="mt-3">Indicadores</h5>
-            <p>Permite medir avances en el tiempo.</p>
-          </div>
-        </div>
-
-        <div class="col-md-3">
-          <div class="card card-pares p-4 h-100 text-center">
-            <i class="bi bi-people fs-1 text-success"></i>
-            <h5 class="mt-3">Acompañamiento</h5>
-            <p>Apoya la labor de consultores e instituciones.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- OBJETIVOS -->
-  <section class="py-5">
-    <div class="container">
-      <h2 class="section-title">3. Objetivo General</h2>
-      <p>
-        Diseñar una plataforma web interactiva que evalúe el nivel de madurez emprendedora
-        mediante el Modelo PARES y genere recomendaciones personalizadas.
-      </p>
-
-      <h2 class="section-title mt-5">4. Objetivos Específicos</h2>
-      <div class="row g-3 mt-3">
-        <div class="col-md-4"><span class="badge-pares">Digitalizar el Modelo PARES</span></div>
-        <div class="col-md-4"><span class="badge-pares">Evaluar madurez emprendedora</span></div>
-        <div class="col-md-4"><span class="badge-pares">Generar reportes automáticos</span></div>
-        <div class="col-md-4"><span class="badge-pares">Recomendar rutas de mejora</span></div>
-        <div class="col-md-4"><span class="badge-pares">Facilitar seguimiento</span></div>
-        <div class="col-md-4"><span class="badge-pares">Apoyar incubación y consultoría</span></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- COMPONENTES -->
-  <section id="componentes" class="py-5 bg-white">
-    <div class="container">
-      <h2 class="section-title text-center mb-5">5. Componentes del Diagnóstico</h2>
-
-      <div class="row g-4">
-        <div class="col-md-4 col-lg">
-          <div class="card card-pares p-4 h-100">
-            <div class="icon-box">P</div>
-            <h4>Persona</h4>
-            <p>Motivación, confianza, liderazgo, autoconocimiento y gestión emocional.</p>
-          </div>
-        </div>
-
-        <div class="col-md-4 col-lg">
-          <div class="card card-pares p-4 h-100">
-            <div class="icon-box">A</div>
-            <h4>Aprendizaje</h4>
-            <p>Capacitación, experiencia, redes de apoyo, mentoría e innovación.</p>
-          </div>
-        </div>
-
-        <div class="col-md-4 col-lg">
-          <div class="card card-pares p-4 h-100">
-            <div class="icon-box">R</div>
-            <h4>Retos</h4>
-            <p>Planificación, objetivos SMART, formalización, riesgos, ventas y finanzas.</p>
-          </div>
-        </div>
-
-        <div class="col-md-4 col-lg">
-          <div class="card card-pares p-4 h-100">
-            <div class="icon-box">E</div>
-            <h4>Eco-responsabilidad</h4>
-            <p>Economía circular, producción limpia, residuos, carbono y responsabilidad social.</p>
-          </div>
-        </div>
-
-        <div class="col-md-4 col-lg">
-          <div class="card card-pares p-4 h-100">
-            <div class="icon-box">S</div>
-            <h4>Estrategia</h4>
-            <p>Modelo de negocio, marketing, clientes, digitalización y crecimiento.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- METODOLOGIA -->
-  <section id="metodologia" class="py-5">
-    <div class="container">
-      <h2 class="section-title text-center mb-4">6. Metodología de Evaluación</h2>
-      <p class="text-center mx-auto" style="max-width: 850px;">
-        Cada pregunta se responde con una escala de cinco niveles. El sistema calcula
-        automáticamente el puntaje por dimensión, promedio general, nivel de madurez,
-        recomendaciones y plan de acción.
-      </p>
-
-      <div class="row g-4 mt-4">
-        <div class="col-md-6">
-          <div class="card card-pares p-4 h-100">
-            <h4>Escala de respuesta</h4>
-            <ol>
-              <li>Nunca</li>
-              <li>Rara vez</li>
-              <li>Algunas veces</li>
-              <li>Frecuentemente</li>
-              <li>Siempre</li>
-            </ol>
-          </div>
-        </div>
-
-        <div class="col-md-6">
-          <div class="card card-pares p-4 h-100">
-            <h4>Cálculos automáticos</h4>
-            <ul>
-              <li>Puntaje por dimensión</li>
-              <li>Promedio general</li>
-              <li>Nivel de madurez</li>
-              <li>Recomendaciones</li>
-              <li>Plan de acción</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <div class="table-responsive mt-5">
-        <table class="table table-bordered table-striped align-middle">
-          <thead class="table-success">
-            <tr>
-              <th>Nivel</th>
-              <th>Nombre</th>
-              <th>Puntaje</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>1</td>
-              <td>Emprendimiento inicial</td>
-              <td>0% - 20%</td>
-            </tr>
-            <tr>
-              <td>2</td>
-              <td>Emprendimiento en desarrollo</td>
-              <td>21% - 40%</td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td>Emprendimiento en consolidación</td>
-              <td>41% - 60%</td>
-            </tr>
-            <tr>
-              <td>4</td>
-              <td>Emprendimiento competitivo</td>
-              <td>61% - 80%</td>
-            </tr>
-            <tr>
-              <td>5</td>
-              <td>Emprendimiento referente</td>
-              <td>81% - 100%</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </section>
-
-  <!-- RESULTADOS -->
-  <section class="py-5 bg-white">
-    <div class="container">
-      <h2 class="section-title text-center mb-5">7. Resultados Esperados</h2>
-
-      <div class="row g-4">
-        <div class="col-md-4">
-          <div class="card card-pares p-4 h-100">
-            <i class="bi bi-pie-chart fs-1 text-success"></i>
-            <h5 class="mt-3">Radar de competencias</h5>
-            <p>Visualización de las cinco dimensiones del Modelo PARES.</p>
-          </div>
-        </div>
-
-        <div class="col-md-4">
-          <div class="card card-pares p-4 h-100">
-            <i class="bi bi-graph-up-arrow fs-1 text-success"></i>
-            <h5 class="mt-3">Barras de avance</h5>
-            <p>Medición visual del progreso individual e institucional.</p>
-          </div>
-        </div>
-
-        <div class="col-md-4">
-          <div class="card card-pares p-4 h-100">
-            <i class="bi bi-file-earmark-text fs-1 text-success"></i>
-            <h5 class="mt-3">Reporte descargable</h5>
-            <p>Informe automático con resultados, recomendaciones y plan de acción.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- TECNOLOGIA -->
-  <section id="tecnologia" class="py-5">
-    <div class="container">
-      <h2 class="section-title text-center mb-4">8. Tecnologías Sugeridas</h2>
-
-      <div class="row g-4 text-center">
-        <div class="col-6 col-md-3">
-          <div class="card card-pares p-4">
-            <i class="bi bi-code-slash fs-1 text-success"></i>
-            <h5>HTML5</h5>
-          </div>
-        </div>
-
-        <div class="col-6 col-md-3">
-          <div class="card card-pares p-4">
-            <i class="bi bi-bootstrap fs-1 text-success"></i>
-            <h5>Bootstrap 5</h5>
-          </div>
-        </div>
-
-        <div class="col-6 col-md-3">
-          <div class="card card-pares p-4">
-            <i class="bi bi-braces fs-1 text-success"></i>
-            <h5>JavaScript</h5>
-          </div>
-        </div>
-
-        <div class="col-6 col-md-3">
-          <div class="card card-pares p-4">
-            <i class="bi bi-github fs-1 text-success"></i>
-            <h5>GitHub Pages</h5>
-          </div>
-        </div>
-      </div>
-
-      <div class="text-center mt-4">
-        <p>
-          En una segunda etapa se recomienda integrar Chart.js, Firebase o Supabase.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- FUTURO -->
-  <section id="futuro" class="py-5 bg-white">
-    <div class="container">
-      <div class="cta p-5 text-center">
-        <h2 class="fw-bold">9. Visión Futura</h2>
+<header class="hero">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-8">
+        <span class="badge bg-warning text-dark mb-3">Producto digital emprendedor</span>
+        <h1>PARES Suite</h1>
         <p class="lead mt-3">
-          El Diagnóstico PARES Online puede convertirse en el primer módulo de una plataforma mayor:
-          PARES Suite.
+          Plataforma digital integral para diagnosticar, formar, acompañar, evaluar y certificar personas emprendedoras mediante el Modelo PARES.
         </p>
 
-        <div class="row g-3 mt-4">
-          <div class="col-md-4"><span class="badge bg-light text-success">Academia PARES</span></div>
-          <div class="col-md-4"><span class="badge bg-light text-success">Asistente IA PARES</span></div>
-          <div class="col-md-4"><span class="badge bg-light text-success">CRM para consultores</span></div>
-          <div class="col-md-4"><span class="badge bg-light text-success">Planes de negocio</span></div>
-          <div class="col-md-4"><span class="badge bg-light text-success">Sistema de evidencias</span></div>
-          <div class="col-md-4"><span class="badge bg-light text-success">Certificaciones digitales</span></div>
+        <div class="d-flex flex-wrap gap-3 mt-4">
+          <a href="#modulos" class="btn btn-pares btn-lg">
+            Ver módulos
+          </a>
+          <a href="diagnostico.html" class="btn btn-outline-light btn-lg">
+            Ingresar al Diagnóstico
+          </a>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</header>
 
-  <!-- FOOTER -->
-  <footer class="text-center">
-    <div class="container">
-      <h5>Diagnóstico PARES Online</h5>
-      <p>Project Marketing Office, PMO</p>
-      <p class="mb-0">Modelo PARES | Emprendimiento, innovación y regeneración ambiental</p>
+<section class="py-5 bg-white">
+  <div class="container">
+    <div class="row g-4 align-items-center">
+      <div class="col-lg-6">
+        <h2 class="section-title">Una plataforma modular para crecer paso a paso</h2>
+        <p>
+          PARES Suite inicia con el módulo <strong>Diagnóstico PARES Online</strong>. Los demás módulos quedan preparados para activarse conforme se desarrollen.
+        </p>
+        <p>
+          La lógica del proyecto es sencilla: primero diagnosticar, luego formar, acompañar, evidenciar, medir y certificar.
+        </p>
+      </div>
+
+      <div class="col-lg-6">
+        <div class="card card-module p-4">
+          <h4 class="fw-bold">Estado actual del proyecto</h4>
+          <p class="mb-2">Avance de módulos activos</p>
+          <div class="progress" style="height:26px;">
+            <div class="progress-bar bg-success" style="width:11%;">1 de 9</div>
+          </div>
+          <small class="text-muted d-block mt-2">
+            Módulo 1 activo. Los demás quedan en modo próximamente.
+          </small>
+        </div>
+      </div>
     </div>
-  </footer>
+  </div>
+</section>
 
-  <!-- Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<section id="modulos" class="py-5">
+  <div class="container">
+    <div class="text-center mb-5">
+      <h2 class="section-title">Módulos de PARES Suite</h2>
+      <p>Solo el primer módulo está activo. Los demás se activarán conforme avance el desarrollo.</p>
+    </div>
+
+    <div class="row g-4">
+
+      <div class="col-md-6 col-lg-4">
+        <div class="card card-module p-4">
+          <span class="badge badge-active align-self-start mb-3">Activo</span>
+          <div class="module-icon"><i class="bi bi-clipboard-data"></i></div>
+          <h4>1. Diagnóstico PARES Online</h4>
+          <p>Evalúa la madurez emprendedora en las dimensiones Persona, Aprendizaje, Retos, Eco-responsabilidad y Estrategia.</p>
+          <a href="diagnostico.html" class="btn btn-pares mt-auto">Ingresar</a>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4">
+        <div class="card card-module p-4 locked">
+          <span class="badge badge-soon align-self-start mb-3">Próximamente</span>
+          <div class="module-icon"><i class="bi bi-mortarboard"></i></div>
+          <h4>2. Academia PARES</h4>
+          <p>Cursos cortos para fortalecer ventas, costos, liderazgo, digitalización, formalización y regeneración ambiental.</p>
+          <button class="btn btn-secondary" disabled>Bloqueado</button>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4">
+        <div class="card card-module p-4 locked">
+          <span class="badge badge-soon align-self-start mb-3">Próximamente</span>
+          <div class="module-icon"><i class="bi bi-tools"></i></div>
+          <h4>3. Herramientas PARES</h4>
+          <p>Plantillas, matrices, calculadoras, checklist y recursos prácticos para emprendedores y consultores.</p>
+          <button class="btn btn-secondary" disabled>Bloqueado</button>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4">
+        <div class="card card-module p-4 locked">
+          <span class="badge badge-soon align-self-start mb-3">Próximamente</span>
+          <div class="module-icon"><i class="bi bi-robot"></i></div>
+          <h4>4. Asistente IA PARES</h4>
+          <p>Chatbot orientador basado en la metodología PARES para generar recomendaciones y planes simples.</p>
+          <button class="btn btn-secondary" disabled>Bloqueado</button>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4">
+        <div class="card card-module p-4 locked">
+          <span class="badge badge-soon align-self-start mb-3">Próximamente</span>
+          <div class="module-icon"><i class="bi bi-person-lines-fill"></i></div>
+          <h4>5. CRM para Consultores</h4>
+          <p>Registro de emprendedores, sesiones, tareas, avances, alertas y seguimiento profesional.</p>
+          <button class="btn btn-secondary" disabled>Bloqueado</button>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4">
+        <div class="card card-module p-4 locked">
+          <span class="badge badge-soon align-self-start mb-3">Próximamente</span>
+          <div class="module-icon"><i class="bi bi-folder-check"></i></div>
+          <h4>6. Sistema de Evidencias</h4>
+          <p>Registro de fotografías, documentos, avances, mejoras, ventas, permisos e indicadores.</p>
+          <button class="btn btn-secondary" disabled>Bloqueado</button>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4">
+        <div class="card card-module p-4 locked">
+          <span class="badge badge-soon align-self-start mb-3">Próximamente</span>
+          <div class="module-icon"><i class="bi bi-file-earmark-text"></i></div>
+          <h4>7. Generador de Plan de Negocio</h4>
+          <p>Herramienta guiada para construir un plan básico del emprendimiento con recomendaciones automáticas.</p>
+          <button class="btn btn-secondary" disabled>Bloqueado</button>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4">
+        <div class="card card-module p-4 locked">
+          <span class="badge badge-soon align-self-start mb-3">Próximamente</span>
+          <div class="module-icon"><i class="bi bi-speedometer2"></i></div>
+          <h4>8. Dashboard Institucional</h4>
+          <p>Indicadores agregados para programas, incubadoras, universidades, municipalidades y cooperación.</p>
+          <button class="btn btn-secondary" disabled>Bloqueado</button>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4">
+        <div class="card card-module p-4 locked">
+          <span class="badge badge-soon align-self-start mb-3">Próximamente</span>
+          <div class="module-icon"><i class="bi bi-award"></i></div>
+          <h4>9. Certificaciones Digitales</h4>
+          <p>Insignias, constancias y certificaciones para emprendedores, consultores e instituciones.</p>
+          <button class="btn btn-secondary" disabled>Bloqueado</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="roadmap" class="py-5 bg-white">
+  <div class="container">
+    <div class="text-center mb-5">
+      <h2 class="section-title">Ruta de desarrollo</h2>
+      <p>Una evolución ordenada, conservando la base metodológica del Modelo PARES.</p>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="d-flex gap-3">
+          <div class="roadmap-dot">1</div>
+          <div>
+            <h5>Producto mínimo viable</h5>
+            <p>Landing page, diagnóstico activo, resultados básicos y publicación en GitHub Pages.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="d-flex gap-3">
+          <div class="roadmap-dot">2</div>
+          <div>
+            <h5>Plataforma funcional</h5>
+            <p>Base de datos, usuarios, reportes, panel de consultores e historial de diagnósticos.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="d-flex gap-3">
+          <div class="roadmap-dot">3</div>
+          <div>
+            <h5>Ecosistema PARES</h5>
+            <p>Academia, IA, CRM, evidencias, certificaciones y modelo de licenciamiento institucional.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="tecnologia" class="py-5">
+  <div class="container">
+    <div class="text-center mb-5">
+      <h2 class="section-title">Tecnologías sugeridas</h2>
+      <p>Base sencilla, gratuita y escalable para iniciar.</p>
+    </div>
+
+    <div class="row g-4 text-center">
+      <div class="col-6 col-md-3">
+        <div class="card card-module p-4">
+          <i class="bi bi-filetype-html fs-1 text-success"></i>
+          <h5>HTML5</h5>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-3">
+        <div class="card card-module p-4">
+          <i class="bi bi-bootstrap fs-1 text-success"></i>
+          <h5>Bootstrap 5</h5>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-3">
+        <div class="card card-module p-4">
+          <i class="bi bi-braces fs-1 text-success"></i>
+          <h5>JavaScript</h5>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-3">
+        <div class="card card-module p-4">
+          <i class="bi bi-github fs-1 text-success"></i>
+          <h5>GitHub Pages</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contacto" class="py-5 bg-white">
+  <div class="container">
+    <div class="card card-module p-5 text-center">
+      <h2 class="section-title">PARES Suite</h2>
+      <p class="lead">
+        Diagnostica, aprende, mejora, evidencia y crece.
+      </p>
+      <a href="diagnostico.html" class="btn btn-pares btn-lg">
+        Iniciar con el Módulo 1
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer py-4 text-center">
+  <div class="container">
+    <p class="mb-1 fw-bold">PARES Suite</p>
+    <p class="mb-0">Project Marketing Office, PMO | Modelo PARES</p>
+  </div>
+</footer>
+
+<script>
+  const modulos = {
+    diagnostico: true,
+    academia: false,
+    herramientas: false,
+    ia: false,
+    crm: false,
+    evidencias: false,
+    plannegocio: false,
+    dashboard: false,
+    certificaciones: false
+  };
+
+  console.log("Estado de módulos PARES Suite:", modulos);
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>
