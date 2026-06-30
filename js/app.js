@@ -44,11 +44,13 @@ function calcularDiagnostico() {
   }
 
   const resultado = document.getElementById("resultadoDiagnostico");
-  resultado.classList.remove("d-none");
-  resultado.innerHTML = `
-    <h4>Resultado preliminar</h4>
-    <p><strong>Puntaje:</strong> ${porcentaje}%</p>
-    <p><strong>${nivel}</strong></p>
-    <p>${recomendacion}</p>
-  `;
+  if (resultado) {
+    resultado.classList.remove("d-none");
+    resultado.innerHTML = `
+      <h4>Resultado preliminar</h4>
+      <p><strong>Puntaje:</strong> ${porcentaje}%</p>
+      <p><strong>${nivel}</strong></p>
+      <p>${recomendacion}</p>
+    `;
+  }
 }

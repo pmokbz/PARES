@@ -1,24 +1,11 @@
-# PARES Suite - Rediseño PMO
+# PARES Suite - PMO Ajustado
 
-Versión rediseñada para GitHub Pages con paleta azul rey, celeste, verde y morado, incorporando el logo de PMO.
+Versión ajustada para GitHub Pages.
 
-## Archivos incluidos
+## Ajustes incluidos
 
-- `index.html`
-- `diagnostico.html`
-- `css/estilos.css`
-- `js/app.js`
-- `img/logo-pmo.png`
-- `README.md`
-
-## Publicación en GitHub Pages
-
-1. Crear un repositorio.
-2. Subir todos los archivos manteniendo las carpetas.
-3. Ir a Settings > Pages.
-4. Seleccionar Branch `main` y carpeta `/root`.
-5. Guardar y abrir el enlace que entrega GitHub Pages.
-
-## Activación de módulos
-
-Los módulos futuros están preparados visualmente como bloqueados. Para activarlos, cree la página HTML correspondiente y cambie el botón en `index.html`.
+- Botón de WhatsApp al número +50683612601.
+- Enlace de WhatsApp en el menú principal.
+- Botón flotante de WhatsApp en la página principal.
+- Números visibles del 1 al 5 debajo de cada barra del formulario diagnóstico.
+- Paleta visual: azul rey, celeste, verde y morado.
